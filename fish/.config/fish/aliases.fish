@@ -15,3 +15,6 @@ alias ..... "cd ../../../.."
 
 # Why the long name dude ?
 alias fig "docker-compose"
+
+# Nuke detected.
+alias nuke "rm -rf"
