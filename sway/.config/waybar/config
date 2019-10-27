@@ -1,0 +1,38 @@
+{
+	"layer": "top",
+	"modules-left": [
+		"sway/workspaces"
+	],
+	"modules-center": [],
+	"modules-right": [
+		"tray",
+		"cpu",
+		"memory",
+		"custom/brightness",
+		"battery",
+		"custom/binclock"
+	],
+	"battery": {
+		"format": "Ba {capacity}%"
+	},
+	"custom/binclock": {
+		"exec": "python3 ~/.config/waybar/binclock",
+		"interval": 1
+	},
+	"tray": {
+		"icon-size": 21,
+		"spacing": 10
+	},
+	"custom/brightness": {
+		"exec": "brightnessctl get",
+		"interval": 1,
+		"format": "Br {}"
+	},
+	"cpu": {
+		"format": "CPU {usage}%",
+		"tooltip": false
+	},
+	"memory": {
+		"format": "Mem {}%"
+	}
+}

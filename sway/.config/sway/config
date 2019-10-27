@@ -1,0 +1,66 @@
+# Keys
+set $mod Mod4
+set $alt Mod1
+
+# Softwares
+set $term termite
+set $browser firefox-developer-edition
+set $menu termite --name="launcher" -e "bash -c 'echo -n \"$PATH\" | xargs -d: -I{} -r -- rfind -L {} -maxdepth 1 -mindepth 1 -type f -executable | sort -u | fzf | xargs -r swaymsg exec'"
+for_window [app_id="^launcher$"] floating enable, border none
+
+# Output configuration
+output * bg ~/pictures/wallpapers/amarr_victor.jpg fill
+input * xkb_layout "fr"
+input * xkb_variant "oss_sundeadkeys"
+for_window [class="^.*"] border pixel 0
+default_border none
+exec waybar
+
+exec swayidle -w timeout 600 'swaylock -f -c 000000' timeout 300 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' before-sleep 'swaylock -f -c 000000'
+
+# Bindings
+bindsym $mod+Return exec $term
+bindsym $mod+q exec $browser
+bindsym $mod+r exec $menu
+
+bindsym $mod+f fullscreen
+bindsym $mod+Shift+q kill
+
+bindsym $mod+s exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') -g "$(slurp)" $(xdg-user-dir PICTURES)/screenshot-$(date '+%FT%H:%M:%S').png
+bindsym XF86MonBrightnessDown exec brigthnessctl set -- -5%
+bindsym XF86MonBrightnessUp exec brigthnessctl set -- +5%
+bindsym XF86AudioMute exec  pactl -- set-sink-mute 0 toggle
+bindsym XF86AudioLowerVolume exec pactl -- set-sink-volume 0 -5%
+bindsym XF86AudioRaiseVolume exec pactl -- set-sink-volume 0 +5%
+
+bindsym $mod+Shift+c reload
+bindsym $mod+l exec swaylock -c "000000"
+bindsym $mod+Shift+e exec swaynag -t warning -m 'Shutdown now?' -b 'Yes' 'swaymsg exec shutdown now'
+
+# switch to workspace
+bindsym $mod+Right workspace next
+bindsym $mod+Left workspace prev
+
+bindsym $mod+ampersand workspace 1
+bindsym $mod+eacute workspace 2
+bindsym $mod+quotedbl workspace 3
+bindsym $mod+apostrophe workspace 4
+bindsym $mod+parenleft workspace 5
+bindsym $mod+minus workspace 6
+bindsym $mod+egrave workspace 7
+bindsym $mod+underscore workspace 8
+bindsym $mod+ccedilla workspace 9
+bindsym $mod+agrave workspace 10
+
+bindsym $mod+Shift+ampersand move container to workspace 1
+bindsym $mod+Shift+eacute move container to workspace 2
+bindsym $mod+Shift+quotedbl move container to workspace 3
+bindsym $mod+Shift+apostrophe move container to workspace 4
+bindsym $mod+Shift+parenleft move container to workspace 5
+bindsym $mod+Shift+minus move container to workspace 6
+bindsym $mod+Shift+egrave move container to workspace 7
+bindsym $mod+Shift+underscore move container to workspace 8
+bindsym $mod+Shift+ccedilla move container to workspace 9
+bindsym $mod+Shift+agrave move container to workspace 10
+
+include /etc/sway/config.d/*
