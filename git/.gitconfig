@@ -1,0 +1,32 @@
+[alias]
+	tree = log --oneline --graph --pretty=format:'%C(red)%h %Creset%s %C(blue)%an %C(green)%ci %C(yellow)%d %Creset'
+	aliases = config --get-regexp alias
+	commend = commit --amend --no-edit
+	please = push --force-with-lease
+	praise = blame
+	git = !exec git
+	prune = fetch --prune
+	spawn = "!f() { git worktree add -b $1 w/$1; }; f"
+	fixup = commit --fixup
+	stag = "!f() { git tag -l \"$1-*\"; }; f"
+[color]
+	ui = true
+[core]
+	editor = nvim
+	excludesfile = ~/.gitignore
+[pull]
+	rebase = true
+[push]
+	default = simple
+[merge]
+	ff = false
+[rebase]
+	autosquash = true
+[user]
+	name = Romain Baugue
+	email = romain.baugue@elwinar.com
+	signingkey = 0BDB1B82
+[diff]
+	algorithm = minimal
+	compactionHeuristic = true
+	renames = true
