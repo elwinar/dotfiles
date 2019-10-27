@@ -24,6 +24,13 @@ set fish_term24bit 1
 # Import the aliases
 . (dirname (status -f))/aliases.fish
 
+if not functions -q fundle
+	eval (curl -sfL https://git.io/fundle-install)
+end
+fundle plugin 'jethrokuan/z'
+fundle plugin 'jorgebucaran/fish-nvm'
+fundle init
+
 # Find and source a per-host configuraiton file
 if test -e (dirname (status -f))/host.d/(hostname).fish
 	. (dirname (status -f))/host.d/(hostname).fish
