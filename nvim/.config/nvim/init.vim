@@ -48,3 +48,5 @@ set ttyfast
 set backspace=indent,eol,start
 set list lcs=trail:.,tab:»\ 
 set nofoldenable
+
+set backupcopy=yes
