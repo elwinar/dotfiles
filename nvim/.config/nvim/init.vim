@@ -12,6 +12,7 @@ Plug 'levelone/tequila-sunrise.vim'
 Plug 'danilo-augusto/vim-afterglow'
 Plug 'tyrannicaltoucan/vim-deep-space'
 Plug 'nanotech/jellybeans.vim'
+Plug 'altercation/vim-colors-solarized'
 
 call plug#end()
 

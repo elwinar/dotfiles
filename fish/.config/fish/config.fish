@@ -21,17 +21,15 @@ set -x PATH ~/.local/bin $PATH
 # Ensure the fish shell doesn't fuckup with colors
 set fish_term24bit 1
 
+set -x PASSWORD_STORE_DIR ~/passwords
+
 # Import the aliases
 . (dirname (status -f))/aliases.fish
 
-if not functions -q fundle
-	eval (curl -sfL https://git.io/fundle-install)
-end
-fundle plugin 'jethrokuan/z'
-fundle plugin 'jorgebucaran/fish-nvm'
-fundle init
+# Import the colors
+# . (dirname (status -f))/colors.fish
 
 # Find and source a per-host configuraiton file
-if test -e (dirname (status -f))/host.d/(hostname).fish
-	. (dirname (status -f))/host.d/(hostname).fish
+if test -e (dirname (status -f))/config.(hostname).fish
+	. (dirname (status -f))/config.(hostname).fish
 end

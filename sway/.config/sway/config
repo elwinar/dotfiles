@@ -14,9 +14,6 @@ input * xkb_layout "fr"
 input * xkb_variant "oss_sundeadkeys"
 for_window [class="^.*"] border pixel 0
 default_border none
-exec waybar
-
-exec swayidle -w timeout 600 'swaylock -f -c 000000' timeout 300 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' before-sleep 'swaylock -f -c 000000'
 
 # Bindings
 bindsym $mod+Return exec $term
@@ -26,7 +23,7 @@ bindsym $mod+r exec $menu
 bindsym $mod+f fullscreen
 bindsym $mod+Shift+q kill
 
-bindsym $mod+s exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') -g "$(slurp)" $(xdg-user-dir PICTURES)/screenshot-$(date '+%FT%H:%M:%S').png
+bindsym $mod+s exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') -g $(slurp) $(xdg-user-dir PICTURES)/screenshot-$(date '+%FT%H:%M:%S').png
 bindsym XF86MonBrightnessDown exec brigthnessctl set -- -5%
 bindsym XF86MonBrightnessUp exec brigthnessctl set -- +5%
 bindsym XF86AudioMute exec  pactl -- set-sink-mute 0 toggle
@@ -62,5 +59,9 @@ bindsym $mod+Shift+egrave move container to workspace 7
 bindsym $mod+Shift+underscore move container to workspace 8
 bindsym $mod+Shift+ccedilla move container to workspace 9
 bindsym $mod+Shift+agrave move container to workspace 10
+
+# Bar
+exec waybar
+exec swayidle -w timeout 600 'swaylock -f -c 000000' timeout 300 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' before-sleep 'swaylock -f -c 000000'
 
 include /etc/sway/config.d/*
