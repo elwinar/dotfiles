@@ -3,7 +3,6 @@ call plug#begin()
 Plug 'justinmk/vim-dirvish'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'fatih/vim-go'
 Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'joshdick/onedark.vim'
@@ -13,6 +12,9 @@ Plug 'danilo-augusto/vim-afterglow'
 Plug 'tyrannicaltoucan/vim-deep-space'
 Plug 'nanotech/jellybeans.vim'
 Plug 'altercation/vim-colors-solarized'
+
+Plug 'dag/vim-fish'
+Plug 'fatih/vim-go'
 
 call plug#end()
 
