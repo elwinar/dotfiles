@@ -15,6 +15,8 @@ Plug 'altercation/vim-colors-solarized'
 
 Plug 'dag/vim-fish'
 Plug 'fatih/vim-go'
+Plug 'pangloss/vim-javascript'
+Plug 'MaxMEllon/vim-jsx-pretty'
 
 call plug#end()
 
