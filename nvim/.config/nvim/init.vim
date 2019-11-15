@@ -28,16 +28,14 @@ let g:go_highlight_variable_declarations = 1
 let g:go_highlight_variable_assignments = 1
 let g:go_highlight_types = 1
 
-nnoremap <C-l> :nohlsearch<cr>
-nnoremap <C-f> :NERDTreeTabsToggle<cr>
-nnoremap <C-z> :FZF<cr>
-nnoremap <silent> <C-Left>  :TmuxNavigateLeft<cr>
-nnoremap <silent> <C-Down>  :TmuxNavigateDown<cr>
-nnoremap <silent> <C-Up>    :TmuxNavigateUp<cr>
-nnoremap <silent> <C-Right> :TmuxNavigateRight<cr>
-nnoremap <silent> <C-Tab>   :tabnext<cr>
-nnoremap <silent> <C-S-Tab> :tabprevious<cr>
-nnoremap <F8> :set  number! list!<cr>
+nnoremap <C-l> :nohlsearch<CR>
+nnoremap <C-z> :FZF<CR>
+nnoremap <C-c> :so $MYVIMRC<CR>
+nnoremap <F8> :set  number! list!<CR>
+nnoremap <silent> <C-Left>  :TmuxNavigateLeft<CR>
+nnoremap <silent> <C-Down>  :TmuxNavigateDown<CR>
+nnoremap <silent> <C-Up>    :TmuxNavigateUp<CR>
+nnoremap <silent> <C-Right> :TmuxNavigateRight<CR>
 autocmd FileType dirvish nnoremap <silent><buffer> t :call dirvish#open('tabedit', 0)<CR>
 
 let color_list = ['onedark', 'palenight', 'tequila-sunrise', 'afterglow', 'deep-space', 'jellybeans', 'solarized']
