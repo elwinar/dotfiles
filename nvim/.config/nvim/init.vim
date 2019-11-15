@@ -38,8 +38,9 @@ nnoremap <silent> <C-Up>    :TmuxNavigateUp<CR>
 nnoremap <silent> <C-Right> :TmuxNavigateRight<CR>
 autocmd FileType dirvish nnoremap <silent><buffer> t :call dirvish#open('tabedit', 0)<CR>
 
-let color_list = ['onedark', 'palenight', 'tequila-sunrise', 'afterglow', 'deep-space', 'jellybeans', 'solarized']
-execute "color ".color_list[str2nr(matchstr(reltimestr(reltime()), '\v\.@<=\d+')[1:]) % len(color_list)]
+let _color_list = ['onedark', 'palenight', 'tequila-sunrise', 'afterglow', 'deep-space', 'jellybeans', 'solarized']
+let _color = _color_list[str2nr(matchstr(reltimestr(reltime()), '\v\.@<=\d+')[1:]) % len(_color_list)]
+execute "color "._color
 set termguicolors
 set background=dark
 highlight Normal guibg=None
@@ -52,3 +53,20 @@ set list lcs=trail:.,tab:»\
 set nofoldenable
 
 set backupcopy=yes
+
+set statusline=
+set statusline+=\ 
+set statusline+=%F " filename
+set statusline+=\ 
+set statusline+=%l/%L " cursorline/totalline
+set statusline+=\ 
+set statusline+=%c " cursorcolumn
+set statusline+=\ 
+set statusline+=%m " modified flag
+set statusline+=%r " readonly flag
+set statusline+=%=
+set statusline+=%{strlen(&ft)?&ft:'none'} " filetype
+set statusline+=\ 
+set statusline+=%{_color} " colorscheme
+set statusline+=\ 
+
