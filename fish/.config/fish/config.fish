@@ -30,6 +30,6 @@ set -x PASSWORD_STORE_DIR ~/passwords
 # . (dirname (status -f))/colors.fish
 
 # Find and source a per-host configuraiton file
-if test -e (dirname (status -f))/config.(hostname).fish
-	. (dirname (status -f))/config.(hostname).fish
+if test -e (dirname (status -f))/host.d/(hostname).fish
+	. (dirname (status -f))/host.d/(hostname).fish
 end
