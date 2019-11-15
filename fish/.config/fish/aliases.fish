@@ -18,3 +18,5 @@ alias fig "docker-compose"
 
 # Nuke detected.
 alias nuke "rm -rf"
+
+alias n "nvim"
