@@ -1,5 +1,7 @@
 set -x MONOPOLY $HOME/development/monopoly
-set -x GOPATH $HOME/.go:$MONOPOLY/.env/go/vendors/:$MONOPOLY/.env/go/projects/
+set -x GOPATH $HOME/.go
+set -x NODE_PATH $HOME/.node
+
 add_to_path $HOME/.go/bin
 add_to_path $HOME/.cargo/bin
 add_to_path $HOME/.gem/ruby/2.5.0/bin
