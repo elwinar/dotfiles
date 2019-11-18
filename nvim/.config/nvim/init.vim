@@ -12,6 +12,11 @@ Plug 'danilo-augusto/vim-afterglow'
 Plug 'tyrannicaltoucan/vim-deep-space'
 Plug 'nanotech/jellybeans.vim'
 Plug 'altercation/vim-colors-solarized'
+Plug 'shawncplus/skittles_berry'
+Plug 'dsolstad/vim-wombat256i'
+Plug 'sjl/badwolf'
+Plug 'doums/darcula'
+Plug 'relastle/bluewery.vim'
 
 Plug 'dag/vim-fish'
 Plug 'fatih/vim-go'
@@ -38,13 +43,16 @@ nnoremap <silent> <C-Up>    :TmuxNavigateUp<CR>
 nnoremap <silent> <C-Right> :TmuxNavigateRight<CR>
 autocmd FileType dirvish nnoremap <silent><buffer> t :call dirvish#open('tabedit', 0)<CR>
 
-let _color_list = ['onedark', 'palenight', 'tequila-sunrise', 'afterglow', 'deep-space', 'jellybeans', 'solarized']
+let _color_list = ['onedark', 'palenight', 'tequila-sunrise', 'afterglow', 'deep-space', 'jellybeans', 'solarized', 'bluewery', 'wombat256i', 'badwolf', 'darcula']
 let _color = _color_list[str2nr(matchstr(reltimestr(reltime()), '\v\.@<=\d+')[1:]) % len(_color_list)]
 execute "color "._color
 set termguicolors
 set background=dark
 highlight Normal guibg=None
 highlight NonText guibg=None
+highlight LineNr guibg=None
+highlight StatusLine guibg=None guifg=None
+highlight StatusLineNC guibg=None guifg=None
 set number
 set lazyredraw
 set ttyfast
