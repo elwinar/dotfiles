@@ -27,6 +27,7 @@ Plug 'MaxMEllon/vim-jsx-pretty'
 call plug#end()
 
 let g:tmux_navigator_no_mappings = 1
+
 let g:go_fmt_command = "goimports"
 let g:go_highlight_functions = 1
 let g:go_highlight_function_calls = 1
@@ -43,7 +44,6 @@ nnoremap <silent> <C-Down>  :TmuxNavigateDown<CR>
 nnoremap <silent> <C-Up>    :TmuxNavigateUp<CR>
 nnoremap <silent> <C-Right> :TmuxNavigateRight<CR>
 autocmd FileType dirvish nnoremap <silent><buffer> t :call dirvish#open('tabedit', 0)<CR>
-autocmd BufReadPost * :DetectIndent
 
 let _color_list = ['onedark', 'palenight', 'tequila-sunrise', 'afterglow', 'deep-space', 'jellybeans', 'solarized', 'bluewery', 'wombat256i', 'badwolf', 'darcula', 'OceanicNext']
 let _color = _color_list[str2nr(matchstr(reltimestr(reltime()), '\v\.@<=\d+')[1:]) % len(_color_list)]
