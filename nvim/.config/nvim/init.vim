@@ -17,6 +17,7 @@ Plug 'dsolstad/vim-wombat256i'
 Plug 'sjl/badwolf'
 Plug 'doums/darcula'
 Plug 'relastle/bluewery.vim'
+Plug 'mhartington/oceanic-next'
 
 Plug 'dag/vim-fish'
 Plug 'fatih/vim-go'
@@ -42,8 +43,9 @@ nnoremap <silent> <C-Down>  :TmuxNavigateDown<CR>
 nnoremap <silent> <C-Up>    :TmuxNavigateUp<CR>
 nnoremap <silent> <C-Right> :TmuxNavigateRight<CR>
 autocmd FileType dirvish nnoremap <silent><buffer> t :call dirvish#open('tabedit', 0)<CR>
+autocmd BufReadPost * :DetectIndent
 
-let _color_list = ['onedark', 'palenight', 'tequila-sunrise', 'afterglow', 'deep-space', 'jellybeans', 'solarized', 'bluewery', 'wombat256i', 'badwolf', 'darcula']
+let _color_list = ['onedark', 'palenight', 'tequila-sunrise', 'afterglow', 'deep-space', 'jellybeans', 'solarized', 'bluewery', 'wombat256i', 'badwolf', 'darcula', 'OceanicNext']
 let _color = _color_list[str2nr(matchstr(reltimestr(reltime()), '\v\.@<=\d+')[1:]) % len(_color_list)]
 execute "color "._color
 set termguicolors
