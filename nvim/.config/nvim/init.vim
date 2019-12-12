@@ -23,6 +23,7 @@ Plug 'dag/vim-fish'
 Plug 'fatih/vim-go'
 Plug 'pangloss/vim-javascript'
 Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'cakebaker/scss-syntax.vim'
 
 call plug#end()
 
