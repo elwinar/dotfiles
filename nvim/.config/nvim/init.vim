@@ -1,54 +1,92 @@
 call plug#begin()
 
-Plug 'justinmk/vim-dirvish'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'Shougo/deoplete.nvim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'dag/vim-fish'
+Plug 'danilo-augusto/vim-afterglow'
+Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
+Plug 'doums/darcula'
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'dsolstad/vim-wombat256i'
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+Plug 'joshdick/onedark.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'christoomey/vim-tmux-navigator'
-
-Plug 'joshdick/onedark.vim'
-Plug 'drewtempelmeyer/palenight.vim'
+Plug 'justinmk/vim-dirvish'
 Plug 'levelone/tequila-sunrise.vim'
-Plug 'danilo-augusto/vim-afterglow'
-Plug 'tyrannicaltoucan/vim-deep-space'
-Plug 'nanotech/jellybeans.vim'
-Plug 'altercation/vim-colors-solarized'
-Plug 'shawncplus/skittles_berry'
-Plug 'dsolstad/vim-wombat256i'
-Plug 'sjl/badwolf'
-Plug 'doums/darcula'
-Plug 'relastle/bluewery.vim'
 Plug 'mhartington/oceanic-next'
-
-Plug 'dag/vim-fish'
-Plug 'fatih/vim-go'
+Plug 'nanotech/jellybeans.vim'
 Plug 'pangloss/vim-javascript'
-Plug 'MaxMEllon/vim-jsx-pretty'
-Plug 'cakebaker/scss-syntax.vim'
+Plug 'relastle/bluewery.vim'
+Plug 'sapphirecat/php-psr2-vim'
+Plug 'shawncplus/skittles_berry'
+Plug 'sjl/badwolf'
+Plug 'tyrannicaltoucan/vim-deep-space'
 
 call plug#end()
 
 let g:tmux_navigator_no_mappings = 1
 
+let g:deoplete#enable_at_startup = 1
+set completeopt+=noinsert
+set completeopt+=noselect
+let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+let g:deoplete#sources#go#builtin_objects = 1
+let g:deoplete#sources#go#unimported_packages = 1
+let g:deoplete#sources#go#pointer = 1
+
 let g:go_fmt_command = "goimports"
+let g:go_list_type = "quickfix"
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_function_calls = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
 let g:go_highlight_variable_declarations = 1
 let g:go_highlight_variable_assignments = 1
-let g:go_highlight_types = 1
+let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
+let g:go_auto_type_info = 1
+let g:go_updatetime = 100
+nnoremap <C-M> :GoMetaLinter<CR>
 
-nnoremap <C-l> :nohlsearch<CR>
-nnoremap <C-z> :FZF<CR>
+" Restarting neovim to reload the configuration is attrocious. In addition, it
+" changes the color scheme used….
 nnoremap <C-c> :so $MYVIMRC<CR>
+" Make the post-search window usable again!
+nnoremap <C-l> :nohlsearch<CR>
+" FZF need a shortcut.
+nnoremap <C-z> :FZF<CR>
+" Copy-paste mode.
 nnoremap <F8> :set  number! list!<CR>
+" Seamless tmux/nvim split navigation.
 nnoremap <silent> <C-Left>  :TmuxNavigateLeft<CR>
 nnoremap <silent> <C-Down>  :TmuxNavigateDown<CR>
 nnoremap <silent> <C-Up>    :TmuxNavigateUp<CR>
 nnoremap <silent> <C-Right> :TmuxNavigateRight<CR>
+" Quick navigation in quickfix buffers.
+nnoremap <C-n> :cnext<CR>
+nnoremap <C-p> :cprevious<CR>
+nnoremap <C-q> :cclose<CR>
+" Opening files in tab from dirvish.
 autocmd FileType dirvish nnoremap <silent><buffer> t :call dirvish#open('tabedit', 0)<CR>
+" Go fuck yourself Ex mode.
+map Q <Nop>
+" For the duck-fingered days.
+map ; :
 
+" Load a random color scheme everytime the editor loads the configuration.
 let _color_list = ['onedark', 'palenight', 'tequila-sunrise', 'afterglow', 'deep-space', 'jellybeans', 'solarized', 'bluewery', 'wombat256i', 'badwolf', 'darcula', 'OceanicNext']
 let _color = _color_list[str2nr(matchstr(reltimestr(reltime()), '\v\.@<=\d+')[1:]) % len(_color_list)]
 execute "color "._color
+
+" A few scheme overrides to make them all behave.
 set termguicolors
 set background=dark
 highlight Normal guibg=None
@@ -56,16 +94,21 @@ highlight NonText guibg=None
 highlight LineNr guibg=None
 highlight StatusLine guibg=None guifg=None
 highlight StatusLineNC guibg=None guifg=None
+" Vital visual cues.
 set number
 set lazyredraw
 set ttyfast
 set backspace=indent,eol,start
 set list lcs=trail:.,tab:»\ 
+" Fuck folding.
 set nofoldenable
-
+" Watch daemon are a little lost with neovim's safe-write features.
 set backupcopy=yes
 
+" Minimal status line.
 set statusline=
+set statusline+=\ 
+set statusline+=%{mode()}
 set statusline+=\ 
 set statusline+=%F " filename
 set statusline+=\ 
