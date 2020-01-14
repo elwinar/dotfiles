@@ -5,8 +5,15 @@ set $alt Mod1
 # Softwares
 set $term termite
 set $browser firefox-developer-edition
-set $menu termite --name="launcher" -e "bash -c 'echo -n \"$PATH\" | xargs -d: -I{} -r -- rfind -L {} -maxdepth 1 -mindepth 1 -type f -executable | sort -u | fzf | xargs -r swaymsg exec'"
-for_window [app_id="^launcher$"] floating enable, border none
+# app launcher
+set $launcher $term --name="launcher" -e "fish -c 'swaymsg exec (find -L \$PATH -maxdepth 1 -mindepth 1 -type f -executable | sort -u | fzf)'"
+for_window [app_id="^launcher$"] floating enable, border pixel 1
+# command runner
+set $runner $term --name="runner" -e "fish -c 'swaymsg exec (read)'"
+for_window [app_id="^runner$"] floating enable, border pixel 1, resize set height 20px
+# password manager
+#set $password $term --name="password" -e "fish -c 'swaymsg exec wl-copy (pass (find $PASSWORD_STORE_DIR -name \"*.gpg\" -printf \"%P\n\" | rev | cut -d \".\" -f 2- | rev | fzf))'"
+#for_window [app_id="^password$"] floating enable, border pixel 1
 
 # Output configuration
 output * bg ~/pictures/wallpapers/amarr_victor.jpg fill
@@ -18,12 +25,14 @@ default_border none
 # Bindings
 bindsym $mod+Return exec $term
 bindsym $mod+q exec $browser
-bindsym $mod+r exec $menu
+bindsym $mod+r exec $launcher
+bindsym $mod+Shift+r exec $runner
+bindsym $mod+z exec $password
 
 bindsym $mod+f fullscreen
 bindsym $mod+Shift+q kill
 
-bindsym $mod+s exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') -g $(slurp) $(xdg-user-dir PICTURES)/screenshot-$(date '+%FT%H:%M:%S').png
+bindsym $mod+s exec slurp | grim -g '-' $(xdg-user-dir PICTURES)/screenshot-$(date '+%FT%H:%M:%S').png
 bindsym XF86MonBrightnessDown exec brigthnessctl set -- -5%
 bindsym XF86MonBrightnessUp exec brigthnessctl set -- +5%
 bindsym XF86AudioMute exec  pactl -- set-sink-mute 0 toggle
@@ -33,6 +42,7 @@ bindsym XF86AudioRaiseVolume exec pactl -- set-sink-volume 0 +5%
 bindsym $mod+Shift+c reload
 bindsym $mod+l exec swaylock -c "000000"
 bindsym $mod+Shift+e exec swaynag -t warning -m 'Shutdown now?' -b 'Yes' 'swaymsg exec shutdown now'
+bindsym $mod+a layout toggle split
 
 # switch to workspace
 bindsym $mod+Right workspace next
