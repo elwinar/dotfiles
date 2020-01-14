@@ -20,3 +20,4 @@ alias fig "docker-compose"
 alias nuke "rm -rf"
 
 alias n "nvim"
+alias g "git"
