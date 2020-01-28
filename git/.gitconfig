@@ -31,3 +31,6 @@
 	algorithm = minimal
 	compactionHeuristic = true
 	renames = true
+
+[url "ssh://git@gitlab.synthesio.com/"]
+	insteadOf = https://gitlab.synthesio.com/

@@ -2,7 +2,7 @@ set -x XDG_CURRENT_DESKTOP Unity
 set -x BROWSER firefox-developer-edition
 
 set -x GOPATH $HOME/.go
-set -x GOPRIVATE synthesio/\*
+set -x GOPRIVATE synthesio/\*,gitlab.synthesio.com/\*
 set -x GO111MODULE on
 add_to_path $HOME/.go/bin
 add_to_path $HOME/.cargo/bin
@@ -20,5 +20,7 @@ set -x AGENT_NAPOLEON_URL http://127.0.0.1
 set -x AGENT_DEVELOPMENT true
 # Legacy standard path
 set -x STO_STDPATH $HOME/development/standard
+# Security API token
+set -x FIDGITY_HEADER ewogICAgIm1hcHBpbmdzIjogewogICAgICAgICJzeW50aGVzaW9hcHAiOiB7CiAgICAgICAgICAgICJjbGllbnRfaWQiOiAiNDExMiIsCiAgICAgICAgICAgICJhY2NvdW50X2lkIjogIjIxMTIiCiAgICAgICAgfQogICAgfSwKICAgICJwcm92aWRlcl9pZCI6ICJmbGVtaW5nVjIiLAogICAgInNjb3BlcyI6IFsKICAgICAgICAiaW50ZXJuYWwiCiAgICBdCn0=
 
 
