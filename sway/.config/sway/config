@@ -11,9 +11,6 @@ for_window [app_id="^launcher$"] floating enable, border pixel 1
 # command runner
 set $runner $term --name="runner" -e "fish -c 'swaymsg exec (read)'"
 for_window [app_id="^runner$"] floating enable, border pixel 1, resize set height 20px
-# password manager
-#set $password $term --name="password" -e "fish -c 'swaymsg exec wl-copy (pass (find $PASSWORD_STORE_DIR -name \"*.gpg\" -printf \"%P\n\" | rev | cut -d \".\" -f 2- | rev | fzf))'"
-#for_window [app_id="^password$"] floating enable, border pixel 1
 
 # Output configuration
 output * bg ~/pictures/wallpapers/amarr_victor.jpg fill
