@@ -10,6 +10,8 @@ Plug 'Shougo/deoplete.nvim'
 let g:deoplete#enable_at_startup = 1
 set completeopt+=noinsert
 set completeopt+=noselect
+" Editorconfig because.
+Plug 'editorconfig/editorconfig-vim'
 " Seamless tmux/nvim split navigation.
 Plug 'christoomey/vim-tmux-navigator'
 let g:tmux_navigator_no_mappings = 1
