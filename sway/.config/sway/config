@@ -22,6 +22,10 @@ input * xkb_variant "oss_sundeadkeys"
 for_window [class="^.*"] border pixel 0
 default_border none
 
+input type:touchpad {
+	events disabled_on_external_mouse
+}
+
 # Bindings
 bindsym $mod+Return exec $term
 bindsym $mod+q exec $browser
