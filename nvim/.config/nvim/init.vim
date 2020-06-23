@@ -41,7 +41,7 @@ Plug 'sapphirecat/php-psr2-vim'
 Plug 'plasticboy/vim-markdown'
 nnoremap <C-T> :TableFormat<CR>
 " Golang & co.
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
 let g:go_fmt_command = "goimports"
 let g:go_list_type = "quickfix"
 let g:go_highlight_types = 1
@@ -56,7 +56,7 @@ let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 let g:go_auto_type_info = 0
 nnoremap <C-M> :GoMetaLinter<CR>
 " Golang-related deoplete features.
-Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
+Plug 'deoplete-plugins/deoplete-go', {'do': 'make'}
 let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 let g:deoplete#sources#go#builtin_objects = 1
@@ -68,29 +68,15 @@ Plug 'AndrewRadev/splitjoin.vim'
 " """"""""""""""
 " Color schemes.
 " """"""""""""""
-"
-Plug 'altercation/vim-colors-solarized'
-Plug 'danilo-augusto/vim-afterglow'
-Plug 'doums/darcula'
-Plug 'drewtempelmeyer/palenight.vim'
-Plug 'dsolstad/vim-wombat256i'
-Plug 'joshdick/onedark.vim'
-Plug 'levelone/tequila-sunrise.vim'
-Plug 'mhartington/oceanic-next'
-Plug 'nanotech/jellybeans.vim'
-Plug 'relastle/bluewery.vim'
-Plug 'shawncplus/skittles_berry'
-Plug 'sjl/badwolf'
-Plug 'tyrannicaltoucan/vim-deep-space'
+
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
 
 " We need to end the plugin manager before changing the color scheme or it
 " won't know they exist.
 call plug#end()
 
-" Load a random color scheme everytime the editor loads the configuration.
-let _color_list = ['onedark', 'palenight', 'tequila-sunrise', 'afterglow', 'deep-space', 'jellybeans', 'solarized', 'bluewery', 'wombat256i', 'badwolf', 'darcula', 'OceanicNext']
-let _color = _color_list[str2nr(matchstr(reltimestr(reltime()), '\v\.@<=\d+')[1:]) % len(_color_list)]
-execute "color "._color
+set termguicolors
+color onehalfdark
 
 " """""""""""""""""""""
 " Custom mappings & co.
@@ -111,14 +97,8 @@ nnoremap <C-q> :cclose<CR>
 map Q <Nop>
 " For the duck-fingered days.
 map ; :
-" A few scheme overrides to make them all behave.
-set termguicolors
-set background=dark
-highlight Normal guibg=None
-highlight NonText guibg=None
-highlight LineNr guibg=None
-highlight StatusLine guibg=None guifg=None
-highlight StatusLineNC guibg=None guifg=None
+" For the env files
+vnoremap <C-x> :s/",/"\r/g<CR>
 " Vital visual cues.
 set number
 set lazyredraw
@@ -145,5 +125,4 @@ set statusline+=%r " readonly flag
 set statusline+=%=
 set statusline+=%{strlen(&ft)?&ft:'none'} " filetype
 set statusline+=\ 
-set statusline+=%{_color} " colorscheme
-set statusline+=\ 
+
