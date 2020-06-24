@@ -2,6 +2,8 @@ set -x MONOPOLY $HOME/development/monopoly
 set -x GOPATH $HOME/.go
 set -x NODE_PATH $HOME/.node
 
+set -x MOZ_ENABLE_WAYLAND 1
+
 add_to_path $HOME/.go/bin
 add_to_path $HOME/.cargo/bin
 add_to_path $HOME/.gem/ruby/2.5.0/bin

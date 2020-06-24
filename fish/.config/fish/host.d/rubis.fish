@@ -1,9 +1,11 @@
 set -x XDG_CURRENT_DESKTOP Unity
 set -x BROWSER firefox-developer-edition
+set -x MOZ_ENABLE_WAYLAND 1
 
 set -x GOPATH $HOME/.go
 set -x GOPRIVATE synthesio/\*,gitlab.synthesio.com/\*
 set -x GO111MODULE on
+
 add_to_path $HOME/.go/bin
 add_to_path $HOME/.cargo/bin
 add_to_path $HOME/.gem/ruby/2.5.0/bin
