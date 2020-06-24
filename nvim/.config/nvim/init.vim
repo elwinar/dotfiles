@@ -70,13 +70,50 @@ Plug 'AndrewRadev/splitjoin.vim'
 " """"""""""""""
 
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
+Plug 'morhetz/gruvbox'
+Plug 'tomasr/molokai'
+Plug 'dracula/dracula-theme', {'rtp': 'vim/'}
+Plug 'jnurmine/Zenburn'
+Plug 'NLKNguyen/papercolor-theme'
+
+let s:color_list_dark = ['onehalfdark', 'gruvbox', 'molokai', 'dracula', 'zenburn', 'PaperColor']
+let s:color_list_light = ['onehalflight', 'gruvbox', 'molokai', 'dracula', 'PaperColor']
 
 " We need to end the plugin manager before changing the color scheme or it
 " won't know they exist.
 call plug#end()
 
+" Pseudo-random generation function.
+function! Random()
+	return str2nr(matchstr(reltimestr(reltime()), '\v\.@<=\d+')[1:])
+endfunction
+
+" Select a random color scheme.
+function! RandomColor()
+	if &background == 'dark'
+		execute "color ".s:color_list_dark[Random() % len(s:color_list_dark)]
+	else
+		execute "color ".s:color_list_light[Random() % len(s:color_list_light)]
+	endif
+endfunction
+
+" Load a random color scheme everytime the editor loads the configuration.
 set termguicolors
-color onehalfdark
+set background=dark
+call RandomColor()
+
+function! ToggleStyle()
+	if &background == 'dark'
+		set background=light
+	else
+		set background=dark
+	endif
+	echo &background
+	call RandomColor()
+endfunction
+
+nnoremap <C-t> :call ToggleStyle()<cr>
+nnoremap <C-s> :call RandomColor()<cr>
 
 " """""""""""""""""""""
 " Custom mappings & co.
@@ -125,4 +162,7 @@ set statusline+=%r " readonly flag
 set statusline+=%=
 set statusline+=%{strlen(&ft)?&ft:'none'} " filetype
 set statusline+=\ 
+set statusline+=%{get(g:,'colors_name','default')} " colorscheme
+set statusline+=\ 
+set statusline+=%{&background} " colorscheme
 
