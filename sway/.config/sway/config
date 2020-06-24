@@ -5,6 +5,7 @@ set $alt Mod1
 # Softwares
 set $term termite
 set $browser firefox-developer-edition
+# xwayland disable
 # app launcher
 set $launcher $term --name="launcher" -e "fish -c 'swaymsg exec (find -L \$PATH -maxdepth 1 -mindepth 1 -type f -executable | sort -u | fzf)'"
 for_window [app_id="^launcher$"] floating enable, border pixel 1
