@@ -77,7 +77,7 @@ Plug 'jnurmine/Zenburn'
 Plug 'NLKNguyen/papercolor-theme'
 
 let s:color_list_dark = ['onehalfdark', 'gruvbox', 'molokai', 'dracula', 'zenburn', 'PaperColor']
-let s:color_list_light = ['onehalflight', 'gruvbox', 'molokai', 'dracula', 'PaperColor']
+let s:color_list_light = ['onehalflight', 'gruvbox', 'PaperColor']
 
 " We need to end the plugin manager before changing the color scheme or it
 " won't know they exist.
