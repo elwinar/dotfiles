@@ -34,6 +34,7 @@ autocmd FileType dirvish nnoremap <silent><buffer> t :call dirvish#open('tabedit
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'cakebaker/scss-syntax.vim'
+Plug 'groenewege/vim-less'
 Plug 'dag/vim-fish'
 Plug 'pangloss/vim-javascript'
 Plug 'sapphirecat/php-psr2-vim'
