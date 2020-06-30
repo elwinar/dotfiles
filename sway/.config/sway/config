@@ -5,10 +5,11 @@ set $alt Mod1
 # Softwares
 set $term termite
 set $browser firefox-developer-edition
-# xwayland disable
+
 # app launcher
 set $launcher $term --name="launcher" -e "fish -c 'swaymsg exec (find -L \$PATH -maxdepth 1 -mindepth 1 -type f -executable | sort -u | fzf)'"
 for_window [app_id="^launcher$"] floating enable, border pixel 1
+
 # command runner
 set $runner $term --name="runner" -e "fish -c 'swaymsg exec (read)'"
 for_window [app_id="^runner$"] floating enable, border pixel 1, resize set height 20px
@@ -17,8 +18,7 @@ for_window [app_id="^runner$"] floating enable, border pixel 1, resize set heigh
 output * bg ~/pictures/wallpapers/amarr_victor.jpg fill
 input * xkb_layout "fr"
 input * xkb_variant "oss_sundeadkeys"
-for_window [class="^.*"] border pixel 0
-default_border none
+default_border normal
 
 input type:touchpad {
 	events disabled_on_external_mouse
@@ -31,10 +31,6 @@ bindsym $mod+r exec $launcher
 bindsym $mod+Shift+r exec $runner
 bindsym $mod+z exec $password
 
-bindsym $mod+f fullscreen
-bindsym $mod+Shift+q kill
-
-bindsym $mod+s exec slurp | grim -g '-' $(xdg-user-dir PICTURES)/screenshot-$(date '+%FT%H:%M:%S').png
 bindsym XF86MonBrightnessDown exec brigthnessctl set -- -5%
 bindsym XF86MonBrightnessUp exec brigthnessctl set -- +5%
 bindsym XF86AudioMute exec  pactl -- set-sink-mute 0 toggle
@@ -44,7 +40,7 @@ bindsym XF86AudioRaiseVolume exec pactl -- set-sink-volume 0 +5%
 bindsym $mod+Shift+c reload
 bindsym $mod+l exec swaylock -c "000000"
 bindsym $mod+Shift+e exec swaynag -t warning -m 'Shutdown now?' -b 'Yes' 'swaymsg exec shutdown now'
-bindsym $mod+a layout toggle split
+bindsym $mod+Shift+q kill
 
 # switch to workspace
 bindsym $mod+Right workspace next
@@ -72,8 +68,25 @@ bindsym $mod+Shift+underscore move container to workspace 8
 bindsym $mod+Shift+ccedilla move container to workspace 9
 bindsym $mod+Shift+agrave move container to workspace 10
 
+# You can "split" the current object of your focus with
+# $mod+b or $mod+v, for horizontal and vertical splits
+# respectively.
+bindsym $mod+b splith
+bindsym $mod+v splitv
+
+# Switch the current container between different layout styles
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Make the current focus fullscreen
+bindsym $mod+f fullscreen
+
+# Toggle the current focus between tiling and floating mode
+bindsym $mod+Shift+space floating toggle
+
+# Swap focus between the tiling area and the floating area
+bindsym $mod+space focus mode_toggle
+
 # Bar
 exec waybar
-exec swayidle -w timeout 600 'swaylock -f -c 000000' timeout 300 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' before-sleep 'swaylock -f -c 000000'
-
-include /etc/sway/config.d/*
