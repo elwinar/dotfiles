@@ -14,6 +14,9 @@ for_window [app_id="^launcher$"] floating enable, border pixel 1
 set $runner $term --name="runner" -e "fish -c 'swaymsg exec (read)'"
 for_window [app_id="^runner$"] floating enable, border pixel 1, resize set height 20px
 
+# screenshot
+set $screenshot grimshot save area pictures/screenshots/$(date +"%y%m%d_%H%M%S").png
+
 # Output configuration
 output * bg ~/pictures/wallpapers/amarr_victor.jpg fill
 input * xkb_layout "fr"
@@ -30,6 +33,7 @@ bindsym $mod+q exec $browser
 bindsym $mod+r exec $launcher
 bindsym $mod+Shift+r exec $runner
 bindsym $mod+z exec $password
+bindsym $mod+p exec $screenshot
 
 bindsym XF86MonBrightnessDown exec brigthnessctl set -- -5%
 bindsym XF86MonBrightnessUp exec brigthnessctl set -- +5%
