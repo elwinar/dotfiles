@@ -74,8 +74,8 @@ Plug 'AndrewRadev/splitjoin.vim'
 " won't know they exist.
 call plug#end()
 
-"let base16colorspace=256
-"source ~/.config/nvim/colorscheme.vim
+set termguicolors
+source ~/.config/nvim/colorscheme.vim
 
 " """""""""""""""""""""
 " Custom mappings & co.
