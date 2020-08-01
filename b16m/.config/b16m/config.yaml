@@ -1,0 +1,25 @@
+scheme: gruvbox-dark-soft
+applications:
+        sway:
+                hook: swaymsg reload
+                files:
+                        colors:
+                                destination: ~/.config/sway/theme.conf
+        vim:
+                files:
+                        default:
+                                destination: ~/.config/nvim/colorscheme.vim
+        fish:
+                template_repository_url: https://github.com/elwinar/base16-fish
+                files:
+                        default:
+                                destination: ~/.config/fish/colors.fish
+        termite:
+                hook: killall -USR1 termite
+                files:
+                        default:
+                                destination: ~/.config/termite/config
+                                mode: replace
+                                start_marker: "# <base16>"
+                                end_marker: "# </base16>"
+
