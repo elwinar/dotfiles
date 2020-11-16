@@ -51,7 +51,10 @@ set nofoldenable
 " Colorscheme.
 set termguicolors
 source ~/.config/nvim/colorscheme.vim
-hi Normal guibg=NONE ctermbg=NONE
+hi Normal guibg=none
+hi LineNr guibg=none
+hi StatusLine guibg=none
+hi TabLine guibg=none
 
 " Make the post-search window usable again!
 nnoremap <C-l> :nohlsearch<CR>
