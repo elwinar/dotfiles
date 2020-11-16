@@ -9,6 +9,7 @@ set -x GO111MODULE on
 add_to_path $HOME/.go/bin
 add_to_path $HOME/.cargo/bin
 add_to_path $HOME/.gem/ruby/2.5.0/bin
+add_to_path $HOME/.gem/ruby/2.7.0/bin
 add_to_path $HOME/.config/composer/vendor/bin
 add_to_path $HOME/.npm/bin
 
