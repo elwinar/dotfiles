@@ -1,22 +1,22 @@
-# Gruvbox dark, soft by Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
+# Dracula by Mike Barkmin (http://github.com/mikebarkmin) based on Dracula Theme (http://github.com/dracula)
 
-set -g fish_color_autosuggestion 665c54
+set -g fish_color_autosuggestion 626483
 set -g fish_color_cancel -r
-set -g fish_color_command b8bb26
-set -g fish_color_comment fabd2f
+set -g fish_color_command ebff87
+set -g fish_color_comment 00f769
 set -g fish_color_cwd green
 set -g fish_color_cwd_root red
-set -g fish_color_end d3869b
-set -g fish_color_error fb4934
-set -g fish_color_escape 8ec07c
+set -g fish_color_end b45bcf
+set -g fish_color_error ea51b2
+set -g fish_color_escape a1efe4
 set -g fish_color_history_current --bold
 set -g fish_color_host normal
-set -g fish_color_match 83a598
+set -g fish_color_match 62d6e8
 set -g fish_color_normal normal
-set -g fish_color_operator 83a598
-set -g fish_color_param d5c4a1
-set -g fish_color_quote fabd2f
-set -g fish_color_redirection d5c4a1
+set -g fish_color_operator 62d6e8
+set -g fish_color_param e9e9f4
+set -g fish_color_quote 00f769
+set -g fish_color_redirection e9e9f4
 set -g fish_color_search_match bryellow --background=brblack
 set -g fish_color_selection white --bold --background=brblack
 set -g fish_color_user brgreen
