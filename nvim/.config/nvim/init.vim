@@ -43,6 +43,7 @@ set number
 set lazyredraw
 set ttyfast
 set backspace=indent,eol,start
+set list
 set lcs=trail:-,tab:>\ 
 
 " Fuck folding.
