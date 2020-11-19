@@ -28,18 +28,22 @@ autocmd FileType dirvish nnoremap <silent><buffer> t :call dirvish#open('tabedit
 Plug 'editorconfig/editorconfig-vim'
 
 " Use ALE for code completion.
-let g:ale_completion_enabled = 1
 let g:ale_completion_autoimport = 1
-" Only run the linters on save.
-let g:ale_lint_on_text_changed = 'never'
+let g:ale_completion_enabled = 1
+let g:ale_fix_on_save = 1
+let g:ale_go_golangci_lint_options = '--enable gci'
 let g:ale_lint_on_insert_leave = 0
-" Autofixers.
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_sign_column_always = 1
+" Linters.
+let g:ale_linters = {
+\   'go': ['golangci-lint'],
+\}
+" Fixers.
 let g:ale_fixers = {
 \	'go': ['goimports', 'trim_whitespace', 'remove_trailing_lines'],
 \	'javascript': ['prettier', 'trim_whitespace', 'remove_trailing_lines'],
 \}
-let g:ale_sign_column_always = 1
-let g:ale_fix_on_save = 1
 Plug 'dense-analysis/ale'
 
 " Vital visual cues.
