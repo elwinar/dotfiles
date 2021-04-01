@@ -32,6 +32,7 @@ let g:ale_completion_autoimport = 1
 let g:ale_completion_enabled = 1
 let g:ale_fix_on_save = 1
 let g:ale_go_golangci_lint_options = '--enable gci'
+let g:ale_go_langserver_executable = 'gopls'
 let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_sign_column_always = 1
@@ -43,8 +44,15 @@ let g:ale_linters = {
 let g:ale_fixers = {
 \	'go': ['goimports', 'trim_whitespace', 'remove_trailing_lines'],
 \	'javascript': ['prettier', 'trim_whitespace', 'remove_trailing_lines'],
+\	'css': ['prettier', 'trim_whitespace', 'remove_trailing_lines'],
+\	'html': ['prettier', 'trim_whitespace', 'remove_trailing_lines'],
+\	'php': ['php_cs_fixer', 'trim_whitespace', 'remove_trailing_lines'],
 \}
 Plug 'dense-analysis/ale'
+
+" Table handling
+Plug 'godlygeek/tabular'
+nnoremap <C-t> :Tab /\|<CR>
 
 " Vital visual cues.
 set number
@@ -57,13 +65,8 @@ set lcs=trail:-,tab:>\
 " Fuck folding.
 set nofoldenable
 
-" Colorscheme.
-set termguicolors
-source ~/.config/nvim/colorscheme.vim
-hi Normal guibg=none
-hi LineNr guibg=none
-hi StatusLine guibg=none
-hi TabLine guibg=none
+" Colorschemes.
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 " Make the post-search window usable again!
 nnoremap <C-l> :nohlsearch<CR>
@@ -73,6 +76,8 @@ nnoremap <F8> :set  number! list!<CR>
 
 " Go fuck yourself Ex mode.
 map Q <Nop>
+" You too terminal mode.
+tnoremap <Esc> <C-\><C-n>
 
 " For the duck-fingered days.
 map ; :
@@ -81,3 +86,10 @@ map ; :
 set backupcopy=yes
 
 call plug#end()
+
+set termguicolors
+colorscheme dracula
+hi Normal guibg=none
+hi LineNr guibg=none
+hi StatusLine guibg=none
+hi TabLine guibg=none
