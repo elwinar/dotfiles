@@ -24,7 +24,7 @@ set -x AGENT_DEVELOPMENT true
 # Legacy standard path
 set -x STO_STDPATH $HOME/development/standard
 # Security API token
-set -x FIDGITY_HEADER ewogICAgIm1hcHBpbmdzIjogewogICAgICAgICJzeW50aGVzaW9hcHAiOiB7CiAgICAgICAgICAgICJjbGllbnRfaWQiOiAiNDExMiIsCiAgICAgICAgICAgICJhY2NvdW50X2lkIjogIjIxMTIiCiAgICAgICAgfQogICAgfSwKICAgICJwcm92aWRlcl9pZCI6ICJmbGVtaW5nVjIiLAogICAgInNjb3BlcyI6IFsKICAgICAgICAiaW50ZXJuYWwiCiAgICBdCn0=
+set -x IDENTITY_HEADER X-Identity:ewogICJwcm92aWRlciI6ICJmb3JnZWQiLAogICJjbGllbnRfaWQiOiAiMTcxMyIsCiAgInVzZXJfaWQiOiAiMTMwOTQ3IiwKICAic2NvcGUiOiBbCiAgICAiaW50ZXJuYWwiCiAgXQp9Cg==
 set -x ENV ~/development/env
 # Frontend CHNZ tool-related
 set -x CHNZ_GITLAB_DEFAULT_GROUP frontend
