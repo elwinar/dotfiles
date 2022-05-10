@@ -13,7 +13,7 @@ set -x EDITOR nvim
 set -x VISUAL nvim
 set -x SUDO_EDITOR nvim
 set -x FCEDIT nvim
-set -x MANPAGER "nvim +'set ft=man'"
+# set -x MANPAGER "nvim +'set ft=man'"
 
 # Additions to the PATH
 set -x PATH ~/.local/bin $PATH

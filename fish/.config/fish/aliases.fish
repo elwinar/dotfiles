@@ -21,3 +21,6 @@ alias nuke "rm -rf"
 
 alias n "nvim"
 alias g "git"
+alias kctl "kubectl"
+alias kctx "kubectx"
+alias kns "kubens"

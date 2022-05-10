@@ -13,7 +13,6 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'justinmk/vim-dirvish'
-Plug 'justinmk/vim-dirvish'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'godlygeek/tabular'
 Plug 'editorconfig/editorconfig-vim'
@@ -47,7 +46,7 @@ require 'nvim-treesitter.configs'.setup {
 	highlight = {
 		enable = true,
 	},
-	ensure_installed = 'maintained',
+	ensure_installed = { "c", "lua", "go", "rust", "javascript", "typescript"},
 	indent = {
 		enable = true
 	},
@@ -70,11 +69,11 @@ local on_attach = function(client, bufnr)
 	keymap("<leader>lo", "<cmd>lua vim.lsp.buf.references()<cr>")
 	keymap("<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>")
 
-	if client.resolved_capabilities.document_formatting then
+	if client.server_capabilities.document_formatting then
 		vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
 	end
 
-	if client.resolved_capabilities then
+	if client.server_capabilities then
 	end
 end
 
@@ -82,6 +81,15 @@ local lsp = require('lspconfig')
 lsp["gopls"].setup {
 	on_attach = on_attach,
 	root_dir = lsp.util.root_pattern('.git', 'src/go.mod', 'go.mod'),
+}
+lsp["eslint"].setup {
+	on_attach = on_attach,
+}
+lsp["tsserver"].setup {
+	on_attach = on_attach,
+}
+lsp["graphql"].setup{
+	on_attach = on_attach,
 }
 EOF
 
@@ -105,7 +113,7 @@ compe.setup {
 
   source = {
     buffer = true;
-    -- nvim_lsp = true;
+    nvim_lsp = true;
   };
 }
 EOF
