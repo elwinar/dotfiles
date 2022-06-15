@@ -8,7 +8,7 @@
 	prune = fetch --prune
 	spawn = "!f() { git worktree add -b $1 w/$1; }; f"
 	fixup = commit --fixup
-	stag = "!f() { git tag -l \"$1-*\"; }; f"
+	stag = "!f() { git tag -l \"$1-*\" | sort -V; }; f"
 	prune-tags = "!f() { git fetch --prune $@ \"+refs/tags/*:refs/tags/*\"; }; f"
 [color]
 	ui = true
