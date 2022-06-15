@@ -64,14 +64,12 @@ local on_attach = function(client, bufnr)
 		vim.api.nvim_buf_set_keymap(bufnr, "n", mapping, command, opts)
 	end
 
-	keymap("<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<cr>")
+	keymap("<leader>lf", "<cmd>lua vim.lsp.buf.format { async = true }<cr>")
 	keymap("<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>")
 	keymap("<leader>lo", "<cmd>lua vim.lsp.buf.references()<cr>")
 	keymap("<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>")
 
-	if client.server_capabilities.document_formatting then
-		vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
-	end
+	vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format { async = false }]]
 
 	if client.server_capabilities then
 	end
