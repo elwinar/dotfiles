@@ -7,13 +7,10 @@ set $term alacritty
 set $browser brave-browser
 
 # app launcher
-set $launcher dmenu_path | dmenu | xargs swaymsg exec --
-
-# screenshot
-set $screenshot ~/.local/bin/grimshot save area pictures/screenshots/$(date +"%y%m%d_%H%M%S").png
+set $launcher wofi --show=drun,run
 
 # Output configuration
-output * bg ~/pictures/amarr_victor.jpg fill
+output * bg ~/pictures/victor-rosario.jpg fill
 input * xkb_layout "fr"
 input * xkb_variant "oss"
 default_border normal
@@ -26,22 +23,11 @@ input type:touchpad {
 bindsym $mod+Return exec $term
 bindsym $mod+q exec $browser
 bindsym $mod+r exec $launcher
-bindsym $mod+p exec $screenshot
-
-bindsym XF86MonBrightnessDown exec brigthnessctl set -- -5%
-bindsym XF86MonBrightnessUp exec brigthnessctl set -- +5%
-bindsym XF86AudioMute exec  pactl -- set-sink-mute 0 toggle
-bindsym XF86AudioLowerVolume exec pactl -- set-sink-volume 0 -5%
-bindsym XF86AudioRaiseVolume exec pactl -- set-sink-volume 0 +5%
 
 bindsym $mod+Shift+c reload
 bindsym $mod+l exec swaylock -c "000000"
 bindsym $mod+Shift+e exec swaynag -t warning -m 'Shutdown now?' -b 'Yes' 'swaymsg exec shutdown now'
 bindsym $mod+Shift+q kill
-
-# switch to workspace
-bindsym $mod+Right workspace next
-bindsym $mod+Left workspace prev
 
 bindsym $mod+ampersand workspace 1
 bindsym $mod+eacute workspace 2
@@ -65,27 +51,9 @@ bindsym $mod+Shift+underscore move container to workspace 8
 bindsym $mod+Shift+ccedilla move container to workspace 9
 bindsym $mod+Shift+agrave move container to workspace 10
 
-# You can "split" the current object of your focus with
-# $mod+b or $mod+v, for horizontal and vertical splits
-# respectively.
-bindsym $mod+b splith
-bindsym $mod+v splitv
-
-# Switch the current container between different layout styles
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
-
-# Make the current focus fullscreen
 bindsym $mod+f fullscreen
 
-# Toggle the current focus between tiling and floating mode
-bindsym $mod+Shift+space floating toggle
-
-# Swap focus between the tiling area and the floating area
-bindsym $mod+space focus mode_toggle
-
-# Bar
 exec waybar
+xwayland enable
 
-include outputs
+default_border none
