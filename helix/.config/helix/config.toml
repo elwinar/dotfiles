@@ -1,0 +1,14 @@
+theme = "dracula-local"
+
+[editor]
+true-color=true
+mouse=false
+line-number="absolute"
+auto-pairs=false
+bufferline="multiple"
+lsp.display-inlay-hints=false
+
+[editor.cursor-shape]
+insert="bar"
+normal="block"
+select="underline"
