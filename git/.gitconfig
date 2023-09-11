@@ -26,7 +26,6 @@
 [user]
 	name = Romain Baugue
 	email = romain.baugue@elwinar.com
-	signingkey = 9DE1AB7F987D23D78B314D7460456B98A4C15B28
 [diff]
 	algorithm = minimal
 	compactionHeuristic = true
@@ -35,5 +34,3 @@
 	insteadOf = https://github.com/
 [url "ssh://git@github.com"]
 	insteadOf = https://github.com
-[commit]
-	gpgsign = true
