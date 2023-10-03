@@ -5,6 +5,7 @@ formatter = { command = 'prettier', args = ["--parser", "html"] }
 [[language]]
 name = "json"
 formatter = { command = 'prettier', args = ["--parser", "json"] }
+language-server = { command = "vscode-json-languageserver", args = ["--stdio"], config = { provideFormatter = true } }
 
 [[language]]
 name = "css"

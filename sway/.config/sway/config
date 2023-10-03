@@ -7,13 +7,13 @@ set $term alacritty
 set $browser brave-browser
 
 # app launcher
-set $launcher wofi --show=drun,run
+set $launcher tofi-drun --drun-launch=true
 
 # Output configuration
-output * bg ~/pictures/victor-rosario.jpg fill
 input * xkb_layout "fr"
 input * xkb_variant "oss"
-default_border normal
+default_border pixel 1
+gaps inner 5
 
 input type:touchpad {
 	events disabled_on_external_mouse
@@ -28,6 +28,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+l exec swaylock -c "000000"
 bindsym $mod+Shift+e exec swaynag -t warning -m 'Shutdown now?' -b 'Yes' 'swaymsg exec shutdown now'
 bindsym $mod+Shift+q kill
+bindsym $mod+p exec shotman --capture region
 
 bindsym $mod+ampersand workspace 1
 bindsym $mod+eacute workspace 2
@@ -52,8 +53,13 @@ bindsym $mod+Shift+ccedilla move container to workspace 9
 bindsym $mod+Shift+agrave move container to workspace 10
 
 bindsym $mod+f fullscreen
+bindsym $mod+v layout toggle split
 
+# menubar
 exec waybar
-xwayland enable
-
-default_border none
+# change the wallpaper every boot
+exec ~/bin/painter
+# plugn things for screensharing
+exec ~/bin/electrician
+# notifications
+exec mako
