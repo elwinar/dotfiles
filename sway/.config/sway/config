@@ -26,7 +26,7 @@ bindsym $mod+r exec $launcher
 
 bindsym $mod+Shift+c reload
 bindsym $mod+l exec swaylock -c "000000"
-bindsym $mod+Shift+e exec swaynag -t warning -m 'Shutdown now?' -b 'Yes' 'swaymsg exec shutdown now'
+bindsym $mod+Shift+e exec swaynag -t warning -m 'Exit now?' -b 'Yes' 'swaymsg exit'
 bindsym $mod+Shift+q kill
 bindsym $mod+p exec shotman --capture region
 
