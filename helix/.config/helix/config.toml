@@ -12,3 +12,9 @@ lsp.display-inlay-hints=false
 insert="bar"
 normal="block"
 select="underline"
+
+[keys.normal.";"]
+s=":pipe sort"
+n=":pipe snake"
+r=":reflow"
+#t=["select_regex","align_selections"]
