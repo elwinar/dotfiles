@@ -24,3 +24,5 @@ alias g "git"
 alias kctl "kubectl"
 alias kctx "kubectx"
 alias kns "kubens"
+
+alias watch "viddy"
