@@ -1,35 +1,54 @@
 [[language]]
 name = "html"
-formatter = { command = 'prettier', args = ["--parser", "html"] }
-language-servers = [ {name = 'vscode-json-languageserver' } ]
+formatter = { command = 'prettier' }
 
 [[language]]
 name = "json"
-formatter = { command = 'prettier', args = ["--parser", "json"] }
-
-[language-server.vscode-json-languageserver]
-command = "vscode-json-languageserver"
-args = ["--stdio"]
-config = { provideFormatter = true }
+formatter = { command = 'prettier' }
 
 [[language]]
 name = "css"
-formatter = { command = 'prettier', args = ["--parser", "css"] }
+formatter = { command = 'prettier' }
 
 [[language]]
 name = "javascript"
-formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+formatter = { command = 'prettier' }
+language-servers = [ 'eslint-language-server' ]
 auto-format = true
 
 [[language]]
 name = "typescript"
-formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+formatter = { command = 'prettier' , args = ["--parser", "typescript"] }
+language-servers = [ 'typescript-language-server', 'eslint-language-server' ]
 auto-format = true
 
 [[language]]
 name = "tsx"
-formatter = { command = 'prettier', args = ["--stdin-filepath", "file.tsx"] }
+formatter = { command = 'prettier' , args = ["--parser", "typescript"] }
+language-servers = [ 'typescript-language-server', 'eslint-language-server' ]
 auto-format = true
 
 [language-server.gopls]
 config = { "formatting.gofumpt" = true }
+
+[language-server.eslint-language-server]
+args = ["--stdio"]
+command = "vscode-eslint-language-server"
+
+[language-server.eslint-language-server.config]
+experimental = { useFlagConfig = false }
+nodePath = ""
+problems = { shortenToSingleLine = false }
+rulesCustomizations = []
+run = "onType"
+validate = "on"
+workingDirectory = { mode = "auto" }
+
+[language-server.eslint-language-server.config.codeAction]
+
+[language-server.eslint-language-server.config.codeAction.disableRuleComment]
+enable = true
+location = "separateLine"
+
+[language-server.eslint-language-server.config.codeAction.showDocumentation]
+enable = true

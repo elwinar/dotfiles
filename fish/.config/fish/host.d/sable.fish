@@ -37,7 +37,7 @@ add_to_path $VOLTA_HOME/bin
 
 set -x KUBECTL_EXTERNAL_DIFF kubectl-neat-diff
 set -x AWS_PROFILE staging
-set -x TOKEN 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
+set -x TOKEN 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
 set -x AWS_SSH_KEY ~/.ssh/aws.pem
 set -x ENVS ~/development/envs
 set -x PAYLOADS ~/development/payloads

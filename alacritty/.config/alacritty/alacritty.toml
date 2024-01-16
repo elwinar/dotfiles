@@ -1,0 +1,8 @@
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 10.0
+
+[font.normal]
+family = "Monaspace Argon Light"
