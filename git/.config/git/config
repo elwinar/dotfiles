@@ -1,3 +1,5 @@
+[advice]
+	detachedHead = false
 [alias]
 	tree = log --oneline --graph --pretty=format:'%C(red)%h %Creset%s %C(blue)%an %C(green)%ci %C(yellow)%d %Creset'
 	aliases = config --get-regexp alias
@@ -18,6 +20,7 @@
 	rebase = true
 [push]
 	default = simple
+	autoSetupRemote = true
 [merge]
 	ff = false
 [rebase]

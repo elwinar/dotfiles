@@ -1,0 +1,67 @@
+{
+	"spacing": 4,
+	"modules-left": [
+		"sway/workspaces",
+		"sway/window"
+	],
+	"modules-right": [
+		"tray",
+		"cpu",
+		"memory",
+		"disk",
+		"battery",
+		"temperature",
+		"power-profiles-daemon",
+		"backlight",
+		"network",
+		"custom/binclock",
+	],
+	"sway/workspaces": {
+		"disable-scroll": true
+	},
+    "cpu": {
+        "format": "cpu {usage}%",
+        "tooltip": true,
+        "interval": 1
+    },
+    "memory": {
+        "format": "mem {}%",
+		"tooltip": true,
+        "interval": 1
+    },
+    "disk": {
+        "interval": 30,
+        "format": "disk {percentage_used}%",
+        "path": "/"
+    },
+    "battery": {
+		"states": {
+			"good": 95,
+			"warning": 30,
+			"critical": 15
+		},
+		"format": "bat {capacity}%",
+		"tooltip-format": "cap: {capacity}%\ndraw: {power}W\ntime: {timeTo}"
+    },
+	"temperature": {
+		"format": "temp {temperatureC}°C",
+		"tooltip": false
+	},
+    "power-profiles-daemon": {
+      "format": "prof {profile}"
+    },
+    "backlight": {
+        "format": "lux {percent}%",
+        "on-scroll-up": "brightnessctl set +10%",
+        "on-scroll-down": "brightnessctl set 10%-"
+    },
+    "network": {
+        "format-wifi": "{essid} ({signalStrength}%)",
+        "format-disconnected": "disconnected",
+        "tooltip-format": "{ifname}: {ipaddr}"
+    },
+	"custom/binclock": {
+		"exec": "python3 ~/.config/waybar/binclock",
+		"interval": 1
+	}
+}

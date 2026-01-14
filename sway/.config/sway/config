@@ -1,14 +1,3 @@
-# Keys
-set $mod Mod4
-set $alt Mod1
-
-# Softwares
-set $term alacritty
-set $browser brave-browser
-
-# app launcher
-set $launcher tofi-drun --drun-launch=true
-
 # Output configuration
 input * xkb_layout "fr"
 input * xkb_variant "oss"
@@ -20,15 +9,13 @@ input type:touchpad {
 }
 
 # Bindings
-bindsym $mod+Return exec $term
-bindsym $mod+q exec $browser
-bindsym $mod+r exec $launcher
+set $mod Mod4
 
 bindsym $mod+Shift+c reload
-bindsym $mod+l exec swaylock -c "000000"
+bindsym $mod+l exec swaylock -c "000000" -l -k 
 bindsym $mod+Shift+e exec swaynag -t warning -m 'Exit now?' -b 'Yes' 'swaymsg exit'
 bindsym $mod+Shift+q kill
-bindsym $mod+p exec shotman --capture region
+bindsym $mod+f fullscreen
 
 bindsym $mod+ampersand workspace 1
 bindsym $mod+eacute workspace 2
@@ -36,10 +23,6 @@ bindsym $mod+quotedbl workspace 3
 bindsym $mod+apostrophe workspace 4
 bindsym $mod+parenleft workspace 5
 bindsym $mod+minus workspace 6
-bindsym $mod+egrave workspace 7
-bindsym $mod+underscore workspace 8
-bindsym $mod+ccedilla workspace 9
-bindsym $mod+agrave workspace 10
 
 bindsym $mod+Shift+ampersand move container to workspace 1
 bindsym $mod+Shift+eacute move container to workspace 2
@@ -47,19 +30,17 @@ bindsym $mod+Shift+quotedbl move container to workspace 3
 bindsym $mod+Shift+apostrophe move container to workspace 4
 bindsym $mod+Shift+parenleft move container to workspace 5
 bindsym $mod+Shift+minus move container to workspace 6
-bindsym $mod+Shift+egrave move container to workspace 7
-bindsym $mod+Shift+underscore move container to workspace 8
-bindsym $mod+Shift+ccedilla move container to workspace 9
-bindsym $mod+Shift+agrave move container to workspace 10
 
-bindsym $mod+f fullscreen
-bindsym $mod+v layout toggle split
+
+bindsym $mod+Return exec ghostty
+bindsym $mod+q exec firefox
+bindsym $mod+r exec tofi-drun --drun-launch=true
+set $screenshots_dir ~/screenshots
+bindsym $mod+p exec sway-screenshot -m window -o $screenshots_dir
+bindsym $mod+Shift+p exec sway-screenshot -m region -o $screenshots_dir
 
 # menubar
 exec waybar
-# change the wallpaper every boot
-exec ~/bin/painter
-# plugn things for screensharing
-exec ~/bin/electrician
-# notifications
+exec waypaper --random
+exec ~/bin/choose-random-helix-theme
 exec mako
