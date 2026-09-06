@@ -1,10 +1,3 @@
-# Ensure the path isn't clutered in case of tty imbrication (tmux & co)
-# if set -q ORIGINAL_PATH
-#     set PATH $ORIGINAL_PATH
-# else
-#     set -gx ORIGINAL_PATH $PATH
-# end
-
 # Import the aliases
 . (dirname (status -f))/aliases.fish
 
