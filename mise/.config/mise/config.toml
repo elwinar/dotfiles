@@ -1,0 +1,95 @@
+# Global tool versions, stowed from ~/dotfiles/mise.
+# Run `mise install` to install everything pinned here.
+# See https://mise.jdx.dev/configuration.html
+
+[settings]
+lockfile = true          # record checksums in mise.lock (replaces proto checksum-file)
+
+[tool_alias]
+# Short names for tools mise's shorthand registry doesn't cover.
+kubefwd  = "aqua:txn2/kubefwd"
+hydra    = "aqua:ory/hydra"
+migrate  = "aqua:golang-migrate/migrate"
+kratos   = "github:ory/kratos"
+plakar   = "github:PlakarKorp/plakar"
+postgresql = "github:theseus-rs/postgresql-binaries"
+
+[tools]
+# JavaScript / TypeScript
+node = "24.11.1"
+pnpm = "10.24.0"
+
+# Go
+go = "1.26.2"
+
+# Python
+python = "3.13.15"   # 3.13.0 predates the GitHub artifact attestations mise verifies
+uv     = "0.10.9"
+
+# Code quality
+biome   = "2.0.6"
+gofumpt = "0.10.0"
+ruff    = "0.15.16"
+
+# Dev utilities — registry-resolved
+gh        = "2.95.0"
+jq        = "1.8.1"
+k9s       = "0.51.0"
+kubectl   = "1.36.2"
+kubectx   = "0.11.0"
+mkcert    = "1.4.4"
+terraform = "1.15.7"
+viddy     = "1.3.1"
+kubefwd   = "1.25.15"
+hydra     = "26.2.0"
+migrate   = "4.19.1"
+plakar    = "1.1.4"
+
+# ory/kratos ships `linux_64bit` / `macOS_arm64` assets alongside `_sqlite_`
+# variants; the pattern pins the plain build on every platform.
+kratos = { version = "26.2.0", asset_pattern = 'kratos_{{ version }}-{{os(macos="macOS")}}_{{arch(x64="64bit")}}.tar.gz' }
+
+# Full PostgreSQL (server + client). bin_path exposes every binary under bin/,
+# which is what the old plugin's 40 explicit [install.exes.*] blocks did by hand.
+postgresql = { version = "18.4.0", strip_components = 1, bin_path = "bin" }
+
+# Google Cloud SDK — not on GitHub, archive root is google-cloud-sdk/.
+# The http backend only interpolates {{ version }} (os()/arch() are github-backend
+# only as of mise 2026.9.1), so each platform gets a literal URL.
+[tools."http:gcloud"]
+version  = "571.0.0"
+bin_path = "google-cloud-sdk/bin"
+
+[tools."http:gcloud".platforms]
+linux-x64   = { url = "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-{{ version }}-linux-x86_64.tar.gz" }
+linux-arm64 = { url = "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-{{ version }}-linux-arm.tar.gz" }
+macos-x64   = { url = "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-{{ version }}-darwin-x86_64.tar.gz" }
+macos-arm64 = { url = "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-{{ version }}-darwin-arm.tar.gz" }
+
+# mitmproxy — downloads.mitmproxy.org, and macOS wants arm64 where Linux wants aarch64.
+[tools."http:mitmproxy"]
+version = "12.2.3"
+
+[tools."http:mitmproxy".platforms]
+linux-x64   = { url = "https://downloads.mitmproxy.org/{{ version }}/mitmproxy-{{ version }}-linux-x86_64.tar.gz" }
+linux-arm64 = { url = "https://downloads.mitmproxy.org/{{ version }}/mitmproxy-{{ version }}-linux-aarch64.tar.gz" }
+macos-x64   = { url = "https://downloads.mitmproxy.org/{{ version }}/mitmproxy-{{ version }}-macos-x86_64.tar.gz" }
+macos-arm64 = { url = "https://downloads.mitmproxy.org/{{ version }}/mitmproxy-{{ version }}-macos-arm64.tar.gz" }
+
+# Chrome for Testing — no git tags; versions come from the upstream manifest.
+# Linux arm64 is not published, x64 only.
+[tools."http:chrome-headless-shell"]
+version           = "151.0.7922.34"
+version_list_url  = "https://googlechromelabs.github.io/chrome-for-testing/known-good-versions.json"
+version_json_path = ".versions[].version"
+
+[tools."http:chrome-headless-shell".platforms]
+linux-x64   = { url = "https://storage.googleapis.com/chrome-for-testing-public/{{ version }}/linux64/chrome-headless-shell-linux64.zip" }
+macos-x64   = { url = "https://storage.googleapis.com/chrome-for-testing-public/{{ version }}/mac-x64/chrome-headless-shell-mac-x64.zip" }
+macos-arm64 = { url = "https://storage.googleapis.com/chrome-for-testing-public/{{ version }}/mac-arm64/chrome-headless-shell-mac-arm64.zip" }
+
+# Tools NOT managed here:
+#   sqlc        → `go tool sqlc` (declared in go.mod); mise has aqua:sqlc-dev/sqlc if wanted
+#   hf          → `uv tool install huggingface_hub`
+#   make, git, curl, docker, gnupg, mercurial, redis-tools → system packages
+#   ffmpeg      → only conda/asdf backends in mise; keep using the system build
