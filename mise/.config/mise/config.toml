@@ -53,6 +53,9 @@ kratos = { version = "26.2.0", asset_pattern = 'kratos_{{ version }}-{{os(macos=
 # which is what the old plugin's 40 explicit [install.exes.*] blocks did by hand.
 postgresql = { version = "18.4.0", strip_components = 1, bin_path = "bin" }
 
+"aqua:sqlc-dev/sqlc" = "1.31.1"
+claude = "latest"
+
 # Google Cloud SDK — not on GitHub, archive root is google-cloud-sdk/.
 # The http backend only interpolates {{ version }} (os()/arch() are github-backend
 # only as of mise 2026.9.1), so each platform gets a literal URL.
@@ -89,7 +92,6 @@ macos-x64   = { url = "https://storage.googleapis.com/chrome-for-testing-public/
 macos-arm64 = { url = "https://storage.googleapis.com/chrome-for-testing-public/{{ version }}/mac-arm64/chrome-headless-shell-mac-arm64.zip" }
 
 # Tools NOT managed here:
-#   sqlc        → `go tool sqlc` (declared in go.mod); mise has aqua:sqlc-dev/sqlc if wanted
 #   hf          → `uv tool install huggingface_hub`
 #   make, git, curl, docker, gnupg, mercurial, redis-tools → system packages
 #   ffmpeg      → only conda/asdf backends in mise; keep using the system build
