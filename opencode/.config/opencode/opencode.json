@@ -1,0 +1,62 @@
+{
+	"$schema": "https://opencode.ai/config.json",
+	"instructions": ["~/.config/opencode/instructions.md"],
+	"provider": {
+		"Codix-Iliad": {
+			"npm": "@ai-sdk/openai-compatible",
+			"name": "Codix Iliad",
+			"options": {
+				"baseURL": "https://iliad.codix.scw.eu/v1",
+				"apiKey": "{env:CODIX_ILIAD_KEY}"
+			},
+			"models": {
+				"codiX-agent": {
+					"name": "codiX agent"
+				},
+				"Devstral2-123B": {
+					"name": "Devstral 2 123B"
+				},
+				"Qwen/Qwen3.5-397B-A17B": {
+					"name": "Qwen/Qwen3.5-397B-A17B",
+					"limit": {
+						"context": 250000,
+						"output": 16000
+					}
+				}
+			}
+		},
+		"scaleway": {
+			"models": {
+				"glm-5.3-flash": {
+					"name": "ai-org/GLM-5.3-Flash",
+					"modalities": {
+						"input": ["text"],
+						"output": ["text"]
+					},
+					"options": {
+						"baseURL": "https://fc18c639-0fb6-4d9a-9517-593dd14c086f.pub.instances.scw.cloud/v1"
+					}
+				},
+				"glm-5.2": {
+					"name": "zhipuai/glm-5.2",
+					"modalities": {
+						"input": ["text"],
+						"output": ["text"]
+					},
+					"options": {
+						"max_tokens": 16384
+					}
+				}
+			},
+			"options": {
+				"apiKey": "{env:GLM_SCW_KEY}",
+				"baseURL": "https://api.scaleway.ai/v1"
+			}
+		}
+	},
+	"model": "Codix-Iliad/codiX-agent",
+	"enabled_providers": ["Codix-Iliad", "scaleway"],
+	"permission": {
+		"*": "ask"
+	}
+}
