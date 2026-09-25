@@ -14,7 +14,7 @@
 [color]
 	ui = true
 [core]
-	editor = helix
+	editor = hx
 	excludesfile = ~/.gitignore
 [pull]
 	rebase = true
@@ -36,3 +36,7 @@
 	insteadOf = https://github.com/
 [url "ssh://git@github.com"]
 	insteadOf = https://github.com
+[url "git@gitlab.infra.online.net:"]
+	insteadOf = https://gitlab.infra.online.net/
+[ghq]
+	root = ~/dev

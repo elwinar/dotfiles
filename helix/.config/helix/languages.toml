@@ -36,3 +36,22 @@ auto-format = true
 name = "graphql"
 formatter = { command = "biome", args = ["format", "--stdin-file-path", "a.graphql"] }
 auto-format = true
+
+[[language]]
+name = "miseconfig"
+scope = "source.miseconfig"
+injection-regex = "miseconfig"
+grammar = "toml"
+file-types = [
+  { glob = "mise.toml" },
+  { glob = ".mise.toml" },
+  { glob = "mise.*.toml" },
+  { glob = ".mise.*.toml" },
+  { glob = "mise/config.toml" },
+  { glob = ".mise/config.toml" },
+  { glob = ".config/mise.toml" },
+  { glob = ".config/mise/conf.d/*.toml" },
+]
+comment-token = "#"
+language-servers = [ "taplo", "tombi" ]
+indent = { tab-width = 2, unit = "  " }

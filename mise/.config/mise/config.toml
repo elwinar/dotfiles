@@ -4,6 +4,8 @@
 
 [settings]
 lockfile = true          # record checksums in mise.lock (replaces proto checksum-file)
+always_keep_download = true
+experimental = true
 
 [tool_alias]
 # Short names for tools mise's shorthand registry doesn't cover.
@@ -23,27 +25,27 @@ pnpm = "10.24.0"
 go = "1.26.2"
 
 # Python
-python = "3.13.15"   # 3.13.0 predates the GitHub artifact attestations mise verifies
-uv     = "0.10.9"
+python = "3.14.7"   # 3.13.0 predates the GitHub artifact attestations mise verifies
+uv     = "0.12.10"
 
 # Code quality
-biome   = "2.0.6"
-gofumpt = "0.10.0"
-ruff    = "0.15.16"
+biome   = "2.5.12"
+gofumpt = "0.11.0"
+ruff    = "0.16.6"
 
 # Dev utilities — registry-resolved
-gh        = "2.95.0"
-jq        = "1.8.1"
+gh        = "2.100.0"
+jq        = "1.8.2"
 k9s       = "0.51.0"
-kubectl   = "1.36.2"
+kubectl   = "1.37.0"
 kubectx   = "0.11.0"
 mkcert    = "1.4.4"
-terraform = "1.15.7"
+terraform = "1.16.1"
 viddy     = "1.3.1"
-kubefwd   = "1.25.15"
+kubefwd   = "1.25.16"
 hydra     = "26.2.0"
 migrate   = "4.19.1"
-plakar    = "1.1.4"
+plakar    = "1.1.5"
 
 # ory/kratos ships `linux_64bit` / `macOS_arm64` assets alongside `_sqlite_`
 # variants; the pattern pins the plain build on every platform.
@@ -51,7 +53,27 @@ kratos = { version = "26.2.0", asset_pattern = 'kratos_{{ version }}-{{os(macos=
 
 # Full PostgreSQL (server + client). bin_path exposes every binary under bin/,
 # which is what the old plugin's 40 explicit [install.exes.*] blocks did by hand.
-postgresql = { version = "18.4.0", strip_components = 1, bin_path = "bin" }
+postgresql = { version = "18.6.0", strip_components = "1", bin_path = "bin" }
+opencode = "latest"
+zoxide = "latest"
+dive = "latest"
+ripgrep = "latest"
+act = "latest"
+buf = "latest"
+golangci-lint = "latest"
+bat = "latest"
+"aqua:Zxilly/go-size-analyzer" = "latest"
+taplo = "latest"
+tombi = "latest"
+"aqua:peteretelej/tree" = "latest"
+"forgejo:dnkl/foot" = "latest"
+task = "latest"
+lazygit = "latest"
+zizmor = "latest"
+"pypi:ranger-fm" = "latest"
+fd = "latest"
+"github:floatpane/matcha" = "latest"
+"github:scaleway/scaleway-cli" = "latest"
 
 "aqua:sqlc-dev/sqlc" = "1.31.1"
 claude = "latest"
@@ -82,14 +104,10 @@ macos-arm64 = { url = "https://downloads.mitmproxy.org/{{ version }}/mitmproxy-{
 # Chrome for Testing — no git tags; versions come from the upstream manifest.
 # Linux arm64 is not published, x64 only.
 [tools."http:chrome-headless-shell"]
-version           = "151.0.7922.34"
+version           = "155.0.8043.0"
 version_list_url  = "https://googlechromelabs.github.io/chrome-for-testing/known-good-versions.json"
 version_json_path = ".versions[].version"
-
-[tools."http:chrome-headless-shell".platforms]
-linux-x64   = { url = "https://storage.googleapis.com/chrome-for-testing-public/{{ version }}/linux64/chrome-headless-shell-linux64.zip" }
-macos-x64   = { url = "https://storage.googleapis.com/chrome-for-testing-public/{{ version }}/mac-x64/chrome-headless-shell-mac-x64.zip" }
-macos-arm64 = { url = "https://storage.googleapis.com/chrome-for-testing-public/{{ version }}/mac-arm64/chrome-headless-shell-mac-arm64.zip" }
+platforms= { linux-x64 = { url = "https://storage.googleapis.com/chrome-for-testing-public/{{ version }}/linux64/chrome-headless-shell-linux64.zip" }, macos-x64 = { url = "https://storage.googleapis.com/chrome-for-testing-public/{{ version }}/mac-x64/chrome-headless-shell-mac-x64.zip" }, macos-arm64 = { url = "https://storage.googleapis.com/chrome-for-testing-public/{{ version }}/mac-arm64/chrome-headless-shell-mac-arm64.zip" } }
 
 # Tools NOT managed here:
 #   hf          → `uv tool install huggingface_hub`

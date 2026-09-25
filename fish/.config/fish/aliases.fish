@@ -7,7 +7,7 @@ alias ..... "cd ../../../.."
 
 alias nuke "rm -rf"
 
-alias h helix
+alias h hx
 alias g git
 alias k kubectl
 alias t terraform
