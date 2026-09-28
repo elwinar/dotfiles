@@ -16,6 +16,10 @@
 [core]
 	editor = hx
 	excludesfile = ~/.gitignore
+[diff]
+	algorithm = minimal
+	compactionHeuristic = true
+	renames = true
 [pull]
 	rebase = true
 [push]
@@ -25,18 +29,5 @@
 	ff = false
 [rebase]
 	autosquash = true
-[user]
-	name = Romain Baugue
-	email = romain.baugue@elwinar.com
-[diff]
-	algorithm = minimal
-	compactionHeuristic = true
-	renames = true
-[url "ssh://git@github.com/"]
-	insteadOf = https://github.com/
-[url "ssh://git@github.com"]
-	insteadOf = https://github.com
-[url "git@gitlab.infra.online.net:"]
-	insteadOf = https://gitlab.infra.online.net/
-[ghq]
-	root = ~/dev
+[include]
+	path = "~/.config/git/host"
