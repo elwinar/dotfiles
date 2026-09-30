@@ -77,6 +77,9 @@ fd = "latest"
 
 "aqua:sqlc-dev/sqlc" = "1.31.1"
 claude = "latest"
+"go:golang.org/x/tools/gopls" = "latest"
+"go:github.com/nametake/golangci-lint-langserver" = "latest"
+shellcheck = "0.11.0"
 
 # Google Cloud SDK — not on GitHub, archive root is google-cloud-sdk/.
 # The http backend only interpolates {{ version }} (os()/arch() are github-backend

@@ -6,6 +6,9 @@ args = ["lsp-proxy"]
 command = "typescript-language-server"
 args = ["--stdio"]
 
+[language-server.gopls]
+config = { "formatting.gofumpt" = true }
+
 [[language]]
 name = "html"
 
