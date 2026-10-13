@@ -80,6 +80,14 @@ claude = "latest"
 "go:golang.org/x/tools/gopls" = "latest"
 "go:github.com/nametake/golangci-lint-langserver" = "latest"
 shellcheck = "0.11.0"
+pi = "latest"
+# pi package (ponytail agent skills/extensions) — installed via mise npm backend,
+# wired into pi as a local package in ~/.pi/agent/settings.json
+"npm:@dietrichgebert/ponytail" = "latest"
+"npm:yaml-language-server" = "latest"
+opentofu = "latest"
+vault = "latest"
+glab = "latest"
 
 # Google Cloud SDK — not on GitHub, archive root is google-cloud-sdk/.
 # The http backend only interpolates {{ version }} (os()/arch() are github-backend
