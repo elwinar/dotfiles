@@ -1,2 +1,3 @@
-fish/.config/fish/host.fish
-git/.config/git/host
+fish/host.fish
+git/host
+mise/config.local.toml

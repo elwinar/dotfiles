@@ -1,0 +1,132 @@
+# Global tool versions and dotfiles, deployed from ~/dotfiles/mise.
+# Onboarding: run `mise bootstrap` (installs tools, links dotfile groups).
+# See https://mise.jdx.dev/configuration.html
+
+
+# Dotfiles: replaces GNU stow. One [dotfile_groups.*] per package; root and
+# target are explicit here, so the repo mirrors each app's config directly
+# (no <pkg>/.config indirection). Whole-dir links keep untracked local files
+# such as fish/host.fish and git/host in place without committing them.
+# Apply with `mise bootstrap` or `mise dot apply`.
+# See https://mise.jdx.dev/dotfiles/groups.html
+
+[dotfile_groups.fish]
+root = "fish"
+target = "~/.config/fish"
+mode = "symlink"
+
+[dotfile_groups.git]
+root = "git"
+target = "~/.config/git"
+mode = "symlink"
+
+[dotfile_groups.helix]
+root = "helix"
+target = "~/.config/helix"
+mode = "symlink"
+
+[dotfile_groups.mise]
+root = "mise"
+target = "~/.config/mise"
+mode = "symlink"
+
+# symlink-each (per-file link) so pi's runtime state stays local: auth.json,
+# trust.json, models-store.json and sessions/ are never pulled into the repo.
+[dotfile_groups.pi]
+root = "pi"
+target = "~/.pi/agent"
+mode = "symlink-each"
+
+[dotfile_groups.sway]
+root = "sway"
+target = "~/.config/sway"
+mode = "symlink"
+
+[dotfile_groups.waybar]
+root = "waybar"
+target = "~/.config/waybar"
+mode = "symlink"
+
+[dotfile_groups.tmux]
+root = "tmux"
+target = "~/.config/tmux"
+mode = "symlink"
+
+[dotfile_groups.userdirs]
+root = "xdg"
+target = "~/.config/user-dirs.dirs"
+mode = "symlink"
+
+# Groups applied on this machine. To use a different set on another machine,
+# put `[bootstrap] dotfile_groups = [...]` in its ~/.config/mise/config.local.toml
+# (gitignored). Unlisted groups are left alone.
+[bootstrap]
+dotfile_groups = ["fish", "git", "mise", "pi", "tmux", "helix"]
+
+[settings]
+lockfile = true          # record checksums in mise.lock (replaces proto checksum-file)
+experimental = true
+dotfiles.root = "~/dotfiles"  # where [dotfile_groups] sources live (this repo)
+
+[tool_alias]
+# Short names for tools mise's shorthand registry doesn't cover.
+kubefwd  = "aqua:txn2/kubefwd"
+hydra    = "aqua:ory/hydra"
+migrate  = "aqua:golang-migrate/migrate"
+kratos   = "github:ory/kratos"
+plakar   = "github:PlakarKorp/plakar"
+postgresql = "github:theseus-rs/postgresql-binaries"
+
+[tools]
+node = "24.11.1"
+pnpm = "10.24.0"
+go = "1.26.2"
+python = "3.14.7"   # 3.13.0 predates the GitHub artifact attestations mise verifies
+uv     = "0.12.10"
+biome   = "2.5.12"
+gofumpt = "0.11.0"
+ruff    = "0.16.6"
+gh        = "2.100.0"
+jq        = "1.8.2"
+k9s       = "0.51.0"
+kubectl   = "1.37.0"
+kubectx   = "0.11.0"
+viddy     = "1.3.1"
+zoxide = "latest"
+ripgrep = "latest"
+act = "latest"
+buf = "latest"
+bat = "latest"
+"aqua:Zxilly/go-size-analyzer" = "latest"
+taplo = "latest"
+tombi = "latest"
+"aqua:peteretelej/tree" = "latest"
+"forgejo:dnkl/foot" = "latest"
+lazygit = "latest"
+"pypi:ranger-fm" = "latest"
+fd = "latest"
+"github:floatpane/matcha" = "latest"
+"github:scaleway/scaleway-cli" = "latest"
+"aqua:sqlc-dev/sqlc" = "1.31.1"
+"go:golang.org/x/tools/gopls" = "latest"
+"go:github.com/nametake/golangci-lint-langserver" = "latest"
+shellcheck = "0.11.0"
+pi = "latest"
+"npm:@dietrichgebert/ponytail" = "latest"
+"npm:yaml-language-server" = "latest"
+opentofu = "latest"
+vault = "latest"
+glab = "latest"
+helix = "latest"
+tmux = "latest"
+dive = "latest"
+
+# mitmproxy — downloads.mitmproxy.org, and macOS wants arm64 where Linux wants aarch64.
+[tools."http:mitmproxy"]
+version = "12.2.3"
+
+[tools."http:mitmproxy".platforms]
+linux-x64   = { url = "https://downloads.mitmproxy.org/{{ version }}/mitmproxy-{{ version }}-linux-x86_64.tar.gz" }
+linux-arm64 = { url = "https://downloads.mitmproxy.org/{{ version }}/mitmproxy-{{ version }}-linux-aarch64.tar.gz" }
+macos-x64   = { url = "https://downloads.mitmproxy.org/{{ version }}/mitmproxy-{{ version }}-macos-x86_64.tar.gz" }
+macos-arm64 = { url = "https://downloads.mitmproxy.org/{{ version }}/mitmproxy-{{ version }}-macos-arm64.tar.gz" }
