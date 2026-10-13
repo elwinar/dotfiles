@@ -88,6 +88,7 @@ pi = "latest"
 opentofu = "latest"
 vault = "latest"
 glab = "latest"
+yt-dlp = { version = "latest", rename_exe = "yt-dlp" }
 
 # Google Cloud SDK — not on GitHub, archive root is google-cloud-sdk/.
 # The http backend only interpolates {{ version }} (os()/arch() are github-backend
