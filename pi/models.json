@@ -4,21 +4,7 @@
 			"baseUrl": "https://iliad.codix.scw.eu/v1",
 			"api": "openai-completions",
 			"apiKey": "$CODIX_ILIAD_KEY",
-			"models": [
-				{ "id": "codiX-agent" },
-				{ "id": "Devstral2-123B" },
-				{
-					"id": "Qwen/Qwen3.5-397B-A17B",
-					"contextWindow": 250000,
-					"maxOutputTokens": 16000
-				}
-			]
-		},
-		"scaleway": {
-			"baseUrl": "https://api.scaleway.ai/v1",
-			"api": "openai-completions",
-			"apiKey": "$GLM_SCW_KEY",
-			"models": [{ "id": "ai-org/GLM-5.3-Flash" }, { "id": "zhipuai/glm-5.2" }]
+			"models": [{ "id": "codiX-agent" }]
 		}
 	}
 }
