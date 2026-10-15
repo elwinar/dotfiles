@@ -114,6 +114,9 @@ uv                                                = "latest"
 vault                                             = "latest"
 viddy                                             = "latest"
 zoxide                                            = "latest"
+"github:scaleway/scaleway-cli" = "latest"
+helm = "latest"
+terraform-ls = "latest"
 
 # mitmproxy — downloads.mitmproxy.org, and macOS wants arm64 where Linux wants aarch64.
 [tools."http:mitmproxy"]
