@@ -58,3 +58,8 @@ file-types = [
 comment-token = "#"
 language-servers = [ "taplo", "tombi" ]
 indent = { tab-width = 2, unit = "  " }
+
+# Go template files: highlight .go.tmpl with the gotmpl grammar (parses Go inside {{ }})
+[[language]]
+name = "gotmpl"
+file-types = ["go.tmpl"]

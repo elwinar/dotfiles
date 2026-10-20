@@ -117,6 +117,13 @@ zoxide                                            = "latest"
 "github:scaleway/scaleway-cli" = "latest"
 helm = "latest"
 terraform-ls = "latest"
+yq = "latest"
+ty = "latest"
+"aqua:dlvhdr/gh-dash" = "latest"
+hunk = "latest"
+"aqua:dlvhdr/diffnav" = "latest"
+task = "latest"
+buf = "latest"
 
 # mitmproxy — downloads.mitmproxy.org, and macOS wants arm64 where Linux wants aarch64.
 [tools."http:mitmproxy"]
