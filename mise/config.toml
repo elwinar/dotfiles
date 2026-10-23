@@ -128,6 +128,8 @@ hunk = "latest"
 "aqua:dlvhdr/diffnav" = "latest"
 task = "latest"
 buf = "latest"
+rclone = "latest"
+restic = "latest"
 
 # mitmproxy — downloads.mitmproxy.org, and macOS wants arm64 where Linux wants aarch64.
 [tools."http:mitmproxy"]
