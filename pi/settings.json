@@ -2,5 +2,6 @@
   "lastChangelogVersion": "1.1.0",
   "packages": [
     "../../.local/share/mise/installs/npm-dietrichgebert-ponytail/latest/node_modules/@dietrichgebert/ponytail"
-  ]
+  ],
+  "hideThinkingBlock": false
 }
