@@ -1,0 +1,22 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      '@dietrichgebert/ponytail':
+        specifier: 5.1.0
+        version: 5.1.0
+
+packages:
+
+  '@dietrichgebert/ponytail@5.1.0':
+    resolution: {integrity: sha512-6JQpUc3DwNV2xMPxUuMfRroxYkwj593hM12t1an6xUo5nhTTgpBow1GQzcmVy1PvFocQQN/6A5hq6DahI1UKgQ==}
+
+snapshots:
+
+  '@dietrichgebert/ponytail@5.1.0': {}
