@@ -57,6 +57,10 @@ root = "xdg"
 target = "~/.config/user-dirs.dirs"
 mode = "symlink"
 
+
+[dotfiles]
+"~/bin/mitmproxy-highlight.py" = { mode = "track" }
+
 # Groups applied on this machine. To use a different set on another machine,
 # put `[bootstrap] dotfile_groups = [...]` in its ~/.config/mise/config.local.toml
 # (gitignored). Unlisted groups are left alone.
